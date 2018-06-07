@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,5 +23,17 @@ namespace SqlLibrary{
 
 		}
 
+		public User(SqlDataReader reader) {
+			Id = reader.GetInt32(reader.GetOrdinal("Id"));
+			Username = reader.GetString(reader.GetOrdinal("Username"));
+			Password = reader.GetString(reader.GetOrdinal("Password"));
+			FirstName = reader.GetString(reader.GetOrdinal("Firstname"));
+			LastName = reader.GetString(reader.GetOrdinal("Lastname"));
+			Phone = reader.GetString(reader.GetOrdinal("Phone"));
+			Email = reader.GetString(reader.GetOrdinal("Email"));
+			IsReviewer = reader.GetBoolean(reader.GetOrdinal("IsReviewer"));
+			IsAdmin = reader.GetBoolean(reader.GetOrdinal("IsAdmin"));
+			Active = reader.GetBoolean(reader.GetOrdinal("Active"));
+		}
 	}
 }
